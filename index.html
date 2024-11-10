@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestone - 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <h1 align="center">Resume Builder</h1>
+
+            <b>Profile Picture:</b>
+            <input type="file" id="profilePicture" accept="image/">
+            <br/>
+            <h2>Personal Information</h2>            
+            <b>Name:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>Father Name:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>CNIC:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>Date of Birth:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>Contact Number:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>Email Id:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <b>Residential Adress:</b>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <h2>Educational Details</Details></h2>
+            <input type="text" placeholder="Enter here" required/>
+            <input type="text" placeholder="Enter here" required/>
+            <input type="text" placeholder="Enter here" required/>
+            <input type="text" placeholder="Enter here" required/>
+            <input type="text" placeholder="Enter here" required/>
+            <br/>
+            <h2>Skills</h2>
+       <lebel for="Skills"></lebel>
+       <textarea "required">  </textarea>
+       <textarea "required">  </textarea>
+       <textarea "required">  </textarea>
+       <textarea "required">  </textarea>
+       <textarea "required">  </textarea>
+       <br/>
+       <h2>Working Experience:</h2>
+       <input type="text" placeholder="Enter here" required/>
+       <input type="text" placeholder="Enter here" required/>
+       <input type="text" placeholder="Enter here" required/>
+       <input type="text" placeholder="Enter here" required/>
+       <input type="text" placeholder="Enter here" required/>
+       <input type="text" placeholder="Enter here" required/>
+       <br/>
+       <!-- Include jsPDF from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    // Wait for the DOM content to fully load
+    document.addEventListener("DOMContentLoaded", () => {
+      const pdfButton = document.querySelector(".pdf_button");
+
+      if (pdfButton) {
+        // Add click event listener to generate PDF
+        pdfButton.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevents form submission reload
+          generatePDF(); // Call the generatePDF function
+        });
+      } else {
+        console.error("PDF button not found!");
+      }
+    });
+
+    // Function to gather form data and download as a PDF
+    function generatePDF() {
+      const doc = new jsPDF();
+
+      // Retrieve values from form inputs with type casting
+      const name = document.getElementById("name").value;
+      const fatherName = document.getElementById("fatherName").value;
+      const cnic = document.getElementById("cnic").value;
+      const dob = document.getElementById("dob").value;
+      const contact = document.getElementById("contact").value;
+      const email = document.getElementById("email").value;
+      const address = document.getElementById("address").value;
+      const education1 = document.getElementById("education1").value;
+      const education2 = document.getElementById("education2").value;
+      const education3 = document.getElementById("education3").value;
+      const education4 = document.getElementById("education4").value;
+      const education5 = document.getElementById("education5").value;
+      const skill1 = document.getElementById("skill1").value;
+      const skill2 = document.getElementById("skill2").value;
+      const skill3 = document.getElementById("skill3").value;
+      const skill4 = document.getElementById("skill4").value;
+      const skill5 = document.getElementById("skill5").value;
+      const experience1 = document.getElementById("experience1").value;
+      const experience2 = document.getElementById("experience2").value;
+      const experience3 = document.getElementById("experience3").value;
+      const experience4 = document.getElementById("experience4").value;
+      const experience5 = document.getElementById("experience5").value;
+      const experience6 = document.getElementById("experience6").value;
+
+      // Add content to the PDF
+      doc.setFontSize(14);
+      doc.text("Resume", 10, 10);
+
+      doc.setFontSize(12);
+      doc.text("Personal Information", 10, 20);
+      doc.text(`Name: ${name}`, 10, 30);
+      doc.text(`Father's Name: ${fatherName}`, 10, 40);
+      doc.text(`CNIC: ${cnic}`, 10, 50);
+      doc.text(`Date of Birth: ${dob}`, 10, 60);
+      doc.text(`Contact: ${contact}`, 10, 70);
+      doc.text(`Email: ${email}`, 10, 80);
+      doc.text(`Address: ${address}`, 10, 90);
+
+      doc.text("Education", 10, 110);
+      doc.text(`1. ${education1}`, 10, 120);
+      doc.text(`2. ${education2}`, 10, 130);
+      doc.text(`3. ${education3}`, 10, 140);
+      doc.text(`4. ${education4}`, 10, 150);
+      doc.text(`5. ${education5}`, 10, 160);
+
+      doc.text("Skills", 10, 180);
+      doc.text(`Skill 1: ${skill1}`, 10, 190);
+      doc.text(`Skill 2: ${skill2}`, 10, 200);
+      doc.text(`Skill 3: ${skill3}`, 10, 210);
+      doc.text(`Skill 4: ${skill4}`, 10, 220);
+      doc.text(`Skill 5: ${skill5}`, 10, 230);
+
+      doc.text("Experience", 10, 250);
+      doc.text(`Experience 1: ${experience1}`, 10, 260);
+      doc.text(`Experience 2: ${experience2}`, 10, 270);
+      doc.text(`Experience 3: ${experience3}`, 10, 280);
+      doc.text(`Experience 4: ${experience4}`, 10, 290);
+      doc.text(`Experience 5: ${experience5}`, 10, 300);
+      doc.text(`Experience 6: ${experience6}`, 10, 310);
+
+      // Download the PDF
+      doc.save("Resume.pdf");
+    }
+  </script>
+</body>
+</html>
+       <p align="center">
+        <button id="generatePDFButton">Generate PDF</button>
+        <button class="download"onclick="Download in PDF">Download </button>
+        <div id="resumeContainer">  
+            <!-- Resume content goes here -->
+        </div>
+       
+    </p>
+        </fieldset>
+    </form>
+  <!-- Include jsPDF from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script>
+      document.getElementById("generatePDFButton").addEventListener("click", function () {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF()});
+          // Retrieve values from form inputs
+          const name = document.getElementById("name").value;
+            const fatherName = document.getElementById("fatherName").value;
+            const cnic = document.getElementById("cnic").value;
+            const dob = document.getElementById("dob").value;
+            const contact = document.getElementById("contact").value;
+            const email = document.getElementById("email").value;
+            const address = document.getElementById("address").value;
+            const education1 = document.getElementById("education1").value;
+            const education2 = document.getElementById("education2").value;
+            const education3 = document.getElementById("education3").value;
+            const education4 = document.getElementById("education4").value;
+            const education5 = document.getElementById("education5").value;
+            const skill1 = document.getElementById("skill1").value;
+            const skill2 = document.getElementById("skill2").value;
+            const skill3 = document.getElementById("skill3").value;
+            const skill4 = document.getElementById("skill4").value;
+            const skill5 = document.getElementById("skill5").value;
+            const experience1 = document.getElementById("experience1").value;
+            const experience2 = document.getElementById("experience2").value;
+            const experience3 = document.getElementById("experience3").value;
+            const experience4 = document.getElementById("experience4").value;
+            const experience5 = document.getElementById("experience5").value;
+            const experience6 = document.getElementById("experience6").value;
+
+            // Add content to the PDF
+            doc.setFontSize(14);
+            doc.text("Resume", 10, 10);
+
+            doc.setFontSize(12);
+            doc.text("Personal Information", 10, 20);
+            doc.text(`Name: ${name}`, 10, 30);
+            doc.text(`Father's Name: ${fatherName}`, 10, 40);
+            doc.text(`CNIC: ${cnic}`, 10, 50);
+            doc.text(`Date of Birth: ${dob}`, 10, 60);
+            doc.text(`Contact: ${contact}`, 10, 70);
+            doc.text(`Email: ${email}`, 10, 80);
+            doc.text(`Address: ${address}`, 10, 90);
+
+            doc.text("Education", 10, 110);
+            doc.text(`1. ${education1}`, 10, 120);
+            doc.text(`2. ${education2}`, 10, 130);
+            doc.text(`3. ${education3}`, 10, 140);
+            doc.text(`4. ${education4}`, 10, 150);
+            doc.text(`5. ${education5}`, 10, 160);
+
+            doc.text("Skills", 10, 180);
+            doc.text(`Skill 1: ${skill1}`, 10, 190);
+            doc.text(`Skill 2: ${skill2}`, 10, 200);
+            doc.text(`Skill 3: ${skill3}`, 10, 210);
+            doc.text(`Skill 4: ${skill4}`, 10, 220);
+            doc.text(`Skill 5: ${skill5}`, 10, 230);
+
+            doc.text("Experience", 10, 250);
+            doc.text(`Experience 1: ${experience1}`, 10, 260);
+            doc.text(`Experience 2: ${experience2}`, 10, 270);
+            doc.text(`Experience 3: ${experience3}`, 10, 280);
+            doc.text(`Experience 4: ${experience4}`, 10, 290);
+            doc.text(`Experience 5: ${experience5}`, 10, 300);
+            doc.text(`Experience 6: ${experience6}`, 10, 310);
+
+            // Download the PDF
+            doc.save("Resume.pdf");
+        ;
+    </script>
+</body>
+</html>
+</body>
+
+
+
+<!-- Link to the script file -->
+<script src="script.js"></script>
+<script src="script.ts"></script>
+</html>
